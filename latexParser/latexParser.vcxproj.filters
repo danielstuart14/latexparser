@@ -33,12 +33,18 @@
     <ClCompile Include="..\cparse\shunting-yard.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="solver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cparse.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="sanitize.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="solver.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
