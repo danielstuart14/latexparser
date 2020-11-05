@@ -36,11 +36,12 @@ std::string logicSolver(std::string expression_string) {
             return "{}";
         }
     }
-
+    
     json += "\n\t\"formula\": \"" + expression_string + "\",";
+    json += "\n\t\"truthTable\":{";
 
     for (int x = 0; x < values.size(); x++) {
-        json += "\n\t\"" + (x < charsize ? chars[x] : "result") + "\": [";
+        json += "\n\t\t\"" + (x < charsize ? chars[x] : "result") + "\": [";
         for (int y = 0; y < values[x].size(); y++) {
             json += std::string(values[x][y] ? "\"T\"" : "\"F\"") + ",";
         }
@@ -48,7 +49,7 @@ std::string logicSolver(std::string expression_string) {
         json += "],";
     }
     json = json.substr(0, json.size() - 1);
-    json += "\n}";
+    json += "\n\t}\n}";
 
     return json;
 }

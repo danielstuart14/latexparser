@@ -43,8 +43,8 @@ struct cparseStartup {
         opp.add("&&", 3);
         opp.add("||", 4);
         opp.add("^", 5);
-        opp.add("->", 6);
-        opp.add("<=>", 7);
+        opp.add("->", -6);
+        opp.add("<=>", -7);
 
         opMap_t& opMap = calculator::Default().opMap;
         opMap.add({ UNARY, "!", NUM }, &notOp);
