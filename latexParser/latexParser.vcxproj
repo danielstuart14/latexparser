@@ -141,10 +141,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="cparse\containers.cpp" />
-    <ClCompile Include="cparse\functions.cpp" />
-    <ClCompile Include="cparse\packToken.cpp" />
-    <ClCompile Include="cparse\shunting-yard.cpp" />
+    <ClCompile Include="..\cparse\containers.cpp" />
+    <ClCompile Include="..\cparse\functions.cpp" />
+    <ClCompile Include="..\cparse\packToken.cpp" />
+    <ClCompile Include="..\cparse\shunting-yard.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="sanitize.cpp" />
   </ItemGroup>

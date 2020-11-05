@@ -1,8 +1,8 @@
 #ifndef CPARSE_H
 #define CPARSE_H
 
-#include "./cparse/shunting-yard.h"
-#include "./cparse/shunting-yard-exceptions.h"
+#include "../cparse/shunting-yard.h"
+#include "../cparse/shunting-yard-exceptions.h"
 
 packToken impliesOp(const packToken& left, const packToken& right,
     evaluationData* data) {
