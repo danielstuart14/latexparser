@@ -4,6 +4,16 @@
 
 std::string logic(std::string);
 
+#ifdef EMSCRIPTEN
+    #include <emscripten/bind.h>
+    using namespace emscripten;
+
+    EMSCRIPTEN_BINDINGS(my_module) {
+        function("logic", &logic);
+    }
+
+#else
+
 int main()
 {
     cparseStartup();
@@ -16,6 +26,8 @@ int main()
 
     return 0;
 }
+
+#endif
 
 std::string logic(std::string expression_string) {
 
@@ -52,10 +64,13 @@ std::string logic(std::string expression_string) {
     for (int x = 0; x < values.size(); x++) {
         json += "\n\t\"" + (x < charsize ? chars[x] : "result") + "\": [";
         for (int y = 0; y < values[x].size(); y++) {
-            json += std::string(values[x][y] ? "T" : "F") + ",";
+            json += std::string(values[x][y] ? "\"T\"" : "\"F\"") + ",";
         }
-        json += "\b],";
+        json = json.substr(0, json.size() - 1);
+        json += "],";
     }
+    json = json.substr(0, json.size() - 1);
     json += "\n}";
+
     return json;
 }
