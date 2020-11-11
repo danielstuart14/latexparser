@@ -28,7 +28,7 @@ const Replace latexReplace[] = {
     Replace{"!", " !"},
     Replace{"\\\\lnot", " !"},
     Replace{"not", " !"}, //must be after \lnot
-    Replace{"\\¬", " !"},
+    Replace{"\\ï¿½", " !"},
     Replace{"\\\\neg", " !"},
     Replace{"\\|\\|", " || "},
     Replace{"or", " || "},
@@ -36,8 +36,18 @@ const Replace latexReplace[] = {
     Replace{"v", " || "} //must be after vee
 };
 
+const Replace latexExpression[] = {
+    Replace{" <=> ","\\\\left\\\\to\\\\rightarrow"},
+    Replace{" -> ","\\\\rightarrow"}, //must be after \left\to\rightarrow
+    Replace{" && ","\\\\wedge"},
+    Replace{" ^ ","\\\\oplus"}, //must be after \^
+    Replace{" !","\\\\neg"},
+    Replace{" || ","\\\\vee"},
+};
 const size_t latexSize = sizeof(latexReplace) / sizeof(Replace);
+const size_t latexExpressionSize = sizeof(latexExpression) / sizeof(Replace);
 
 void sanitize(std::string*);
+void returnFormula(std::string*);
 
 #endif
