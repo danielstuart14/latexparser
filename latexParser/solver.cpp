@@ -40,31 +40,42 @@ std::string logicSolver(std::string expression_string) {
     }
     
     std::string latexFormula = expression_string;
-    returnFormula(&latexFormula);
-    std::string latexTable = "\\begin{table}[]\n\\begin{tabular}{";
-    for(int x=0; x<=chars.size(); x++) latexTable+="l";
-    latexTable+="}\n";
-    for(int x=0; x<chars.size(); x++) latexTable+=chars[x]+" & ";
-    latexTable+=latexFormula+" &  \\\\";
+    latex(&latexFormula);
+
+    std::string latexTable = "\t\t\\begin{table}[]\n\t\t\\begin{tabular}{";
+    for (int x = 0; x <= chars.size(); x++)
+        latexTable += "\|c";
+    latexTable += "|}\n\t\t\\hline\n\t\t";
+
+    for(int x=0; x<chars.size(); x++) 
+        latexTable += chars[x] + " & ";
+
+    latexTable+= "$" + latexFormula + "$ \\\\\n\t\t\\hline\n\t\t";
 
     std::string json = "{\n\t\"formula\": \"" + expression_string + "\",";
-    json += "\n\t\"truthTable\":{";
+
+    for (int x = 0; x < values[0].size(); x++) {
+        for (int y = 0; y < values.size() - 1; y++) {
+            latexTable += std::string(values[y][x] ? "T" : "F") + " & ";
+        }
+        latexTable += std::string(values[values.size() - 1][x] ? "T" : "F");
+        latexTable += " \\\\\n\t\t\\hline\n\t\t";
+    }
+    latexTable += "\\end{tabular}\n\t\t\\end{table}";
+
 
     for (int x = 0; x < values.size(); x++) {
         json += "\n\t\t\"" + (x < charsize ? chars[x] : "result") + "\": [";
         for (int y = 0; y < values[x].size(); y++) {
             json += std::string(values[x][y] ? "\"T\"" : "\"F\"") + ",";
-            latexTable += std::string(values[x][y] ? "\"T\"" : "\"F\"") + " & ";
         }
         json = json.substr(0, json.size() - 1);
         json += "],";
-        latexTable+=" \\\\\n";
     }
-    latexTable+="\\end{tabular}\n\\end{table}";
 
     json = json.substr(0, json.size() - 1);
-    json += "\"latexTable\":{\n"+latexTable+"\n}\n";
-    json += "\n\t}\n}";
+    json += "\n\t},\n\t\"latexTable\":{\n"+latexTable+"\n\t}\n";
+    json += "\n}";
 
     return json;
 }

@@ -1,19 +1,18 @@
 #include "sanitize.hpp"
 
-void sanitize(std::string* latex) {
+void regexReplace(std::string* str, const Replace* replace, const size_t size) {
     std::regex reg;
 
-    for (size_t i = 0; i < latexSize; i++) {
-        reg = std::regex(latexReplace[i].oldText);
-        *latex = std::regex_replace(*latex, reg, latexReplace[i].newText);
+    for (size_t i = 0; i < size; i++) {
+        reg = std::regex(replace[i].oldText);
+        *str = std::regex_replace(*str, reg, replace[i].newText);
     }
 }
 
-void returnFormula(std::string* cparse) {
-    std::regex reg;
+void sanitize(std::string* latex) {
+    regexReplace(latex, latexReplace, latexSize);
+}
 
-    for (size_t i = 0; i < latexExpressionSize; i++) {
-        reg = std::regex(latexExpression[i].oldText);
-        *cparse = std::regex_replace(*cparse, reg, latexExpression[i].newText);
-    }
+void latex(std::string* cparse) {
+    regexReplace(cparse, expReplace, expSize);
 }

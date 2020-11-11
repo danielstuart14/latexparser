@@ -38,13 +38,12 @@ struct cparseStartup {
     cparseStartup() {
         OppMap_t& opp = calculator::Default().opPrecedence;
 
-        opp.add("()", 1);
-        opp.addUnary("!", 2);
-        opp.add("&&", 3);
-        opp.add("||", 4);
-        opp.add("^", 5);
-        opp.add("->", -6);
-        opp.add("<=>", -7);
+        opp.addUnary("!", 1);
+        opp.add("&&", 2);
+        opp.add("||", 3);
+        opp.add("^", 4);
+        opp.add("->", -5);
+        opp.add("<=>", -6);
 
         opMap_t& opMap = calculator::Default().opMap;
         opMap.add({ UNARY, "!", NUM }, &notOp);
