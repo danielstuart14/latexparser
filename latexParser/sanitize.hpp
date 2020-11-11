@@ -48,7 +48,7 @@ const Replace expReplace[] = {
     Replace{"&&","\\\\land"},
     Replace{"\\^","\\\\oplus"},
     Replace{"!","\\\\lnot"},
-    Replace{"\\|\\|","\\l\\or"},
+    Replace{"\\|\\|","\\\\lor"},
 };
 const size_t latexSize = sizeof(latexReplace) / sizeof(Replace);
 const size_t expSize = sizeof(expReplace) / sizeof(Replace);

@@ -50,7 +50,7 @@ std::string logicSolver(std::string expression_string) {
     for(int x=0; x<chars.size(); x++) 
         latexTable += chars[x] + " & ";
 
-    latexTable+= "$" + latexFormula + "$ \\\\\\n\\\\hline\\n";
+    latexTable+= "$" + latexFormula + "$ \\\\\\\\\\\\n\\\\hline\\n";
 
     std::string json = "{\n\t\"formula\": \"" + expression_string + "\",";
     json += "\n\t\"truthTable\": {";
@@ -60,7 +60,7 @@ std::string logicSolver(std::string expression_string) {
             latexTable += std::string(values[y][x] ? "T" : "F") + " & ";
         }
         latexTable += std::string(values[values.size() - 1][x] ? "T" : "F");
-        latexTable += " \\\\\\n\\\\hline\\n";
+        latexTable += " \\\\\\\\\\\\n\\\\hline\\n";
     }
     latexTable += "\\\\end{tabular}\\n\\\\end{table}";
 
