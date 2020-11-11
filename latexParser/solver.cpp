@@ -44,7 +44,7 @@ std::string logicSolver(std::string expression_string) {
 
     std::string latexTable = "\t\t\\begin{table}[]\n\t\t\\begin{tabular}{";
     for (int x = 0; x <= chars.size(); x++)
-        latexTable += "\|c";
+        latexTable += "|c";
     latexTable += "|}\n\t\t\\hline\n\t\t";
 
     for(int x=0; x<chars.size(); x++) 
@@ -74,7 +74,7 @@ std::string logicSolver(std::string expression_string) {
     }
 
     json = json.substr(0, json.size() - 1);
-    json += "\n\t},\n\t\"latexTable\":{\n"+latexTable+"\n\t}\n";
+    json += "\n\t},\n\t\"latexTable\":\n\""+latexTable+"\"\n";
     json += "\n}";
 
     return json;
