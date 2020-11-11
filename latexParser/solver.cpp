@@ -42,26 +42,27 @@ std::string logicSolver(std::string expression_string) {
     std::string latexFormula = expression_string;
     latex(&latexFormula);
 
-    std::string latexTable = "\t\t\\begin{table}[]\n\t\t\\begin{tabular}{";
+    std::string latexTable = "\\\\begin{table}[]\\n \\\\begin{tabular}{";
     for (int x = 0; x <= chars.size(); x++)
         latexTable += "|c";
-    latexTable += "|}\n\t\t\\hline\n\t\t";
+    latexTable += "|}\\n\\\\hline\\n";
 
     for(int x=0; x<chars.size(); x++) 
         latexTable += chars[x] + " & ";
 
-    latexTable+= "$" + latexFormula + "$ \\\\\n\t\t\\hline\n\t\t";
+    latexTable+= "$" + latexFormula + "$ \\\\\\n\\\\hline\\n";
 
     std::string json = "{\n\t\"formula\": \"" + expression_string + "\",";
+    json += "\n\t\"truthTable\": {";
 
     for (int x = 0; x < values[0].size(); x++) {
         for (int y = 0; y < values.size() - 1; y++) {
             latexTable += std::string(values[y][x] ? "T" : "F") + " & ";
         }
         latexTable += std::string(values[values.size() - 1][x] ? "T" : "F");
-        latexTable += " \\\\\n\t\t\\hline\n\t\t";
+        latexTable += " \\\\\\n\\\\hline\\n";
     }
-    latexTable += "\\end{tabular}\n\t\t\\end{table}";
+    latexTable += "\\\\end{tabular}\\n\\\\end{table}";
 
 
     for (int x = 0; x < values.size(); x++) {
@@ -74,8 +75,8 @@ std::string logicSolver(std::string expression_string) {
     }
 
     json = json.substr(0, json.size() - 1);
-    json += "\n\t},\n\t\"latexTable\":\n\""+latexTable+"\"\n";
-    json += "\n}";
+    json += "\n\t},\n\t\"latexTable\": \""+latexTable+"\"\n";
+    json += "}";
 
     return json;
 }
