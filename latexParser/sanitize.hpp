@@ -15,15 +15,19 @@ const Replace latexReplace[] = {
     Replace{"\\\\right", ""},
     Replace{"\\\\left", ""},
     Replace{"\\\\left\\\\to\\\\rightarrow", " <=> "},
+    Replace{"\\\\leftrightarrow", " <=> "},
     Replace{"<->", " <=> "},
     Replace{"iff", " <=> "},
     Replace{"\\\\rightarrow", " -> "}, //must be after \left\to\rightarrow
+    Replace{"\\\\to", " -> "},
     Replace{"->", " -> "}, //must be after <->
     Replace{"implies", " -> "},
     Replace{"&&", " && "},
     Replace{"and", " && "},
     Replace{"\\^", " && "},
     Replace{"\\\\wedge", " && "},
+    Replace{"\\\\land", " && "},
+    Replace{"\\\\oplus", " ^ "}, //must be after \^
     Replace{"xor", " ^ "}, //must be after \^
     Replace{"!", " !"},
     Replace{"\\\\lnot", " !"},
@@ -33,6 +37,7 @@ const Replace latexReplace[] = {
     Replace{"\\|\\|", " || "},
     Replace{"or", " || "},
     Replace{"\\\\vee", " || "},
+    Replace{"\\\\lor", " && "},
     Replace{"v", " || "} //must be after vee
 };
 
