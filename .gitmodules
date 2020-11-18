@@ -1,3 +1,4 @@
 [submodule "cparse"]
 	path = cparse
 	url = https://github.com/cparse/cparse
+	branch = master
