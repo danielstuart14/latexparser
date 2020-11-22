@@ -1,23 +1,17 @@
 #include "solver.hpp"
 #include "sanitize.hpp"
 
-std::string logicSolver(std::string expression_string) {
+std::string logicSolver(std::string expression_string, std::string variables) {
 
     std::vector<std::vector<bool>> values;
     std::vector<std::string> chars;
     TokenMap vars;
 
-    for (std::size_t i = 0; i < expression_string.size(); i++) {
-        if (expression_string[i] >= 'A' && expression_string[i] <= 'Z') {
-            bool exists = false;
-            for (std::size_t j = 0; j < chars.size(); j++)
-                if (expression_string[i] == chars[j][0]) exists = true;
-            if (!exists) {
-                chars.push_back(std::string(1, expression_string[i]));
-                values.push_back({});
-            }
-        }
+    for (int i = 0; i < variables.size(); i++) {
+        chars.push_back(std::string(1, variables[i]));
+        values.push_back({});
     }
+
     values.push_back({});
 
     std::size_t charsize = chars.size();

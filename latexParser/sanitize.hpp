@@ -34,6 +34,7 @@ const Replace latexReplace[] = {
     Replace{"lnot", " !"},
     Replace{"not", " !"}, //must be after lnot
     Replace{"\\¬", " !"},
+    Replace{"\\~", " !"},
     Replace{"neg", " !"},
     Replace{"\\|\\|", " || "},
     Replace{"lor", " || "},
@@ -54,6 +55,7 @@ const size_t latexSize = sizeof(latexReplace) / sizeof(Replace);
 const size_t expSize = sizeof(expReplace) / sizeof(Replace);
 
 void sanitize(std::string*);
+std::string extractVars(std::string);
 void latex(std::string*);
 
 #endif

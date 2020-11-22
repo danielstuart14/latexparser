@@ -1,4 +1,4 @@
-#include <iostream>
+#include <string>
 #include "cparse.hpp"
 #include "sanitize.hpp"
 #include "solver.hpp"
@@ -13,6 +13,8 @@ EMSCRIPTEN_BINDINGS(my_module) {
     function("truthTable", &truthTable);
 }
 #else
+#include <iostream>
+
 int main() {
     std::string s;
     std::getline(std::cin, s);
@@ -31,5 +33,7 @@ std::string truthTable(std::string input) {
     }
 
     sanitize(&input);
-    return logicSolver(input);
+
+    std::string variables = extractVars(input);
+    return logicSolver(input, variables);
 }

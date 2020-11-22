@@ -6,7 +6,7 @@
 #include "../cparse/shunting-yard.h"
 #include "../cparse/shunting-yard-exceptions.h"
 
-std::string logicSolver(std::string);
+std::string logicSolver(std::string, std::string);
 
 #endif // !SOLVER_H
 
